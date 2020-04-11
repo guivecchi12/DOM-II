@@ -89,7 +89,7 @@ window.addEventListener('scroll',()=>{
 let selected = document.querySelector("input");
 let change = document.querySelectorAll("h4");
 console.log(selected);
-selected.addEventListener("select",()=>{
+selected.addEventListener("select",(e)=>{
     change.forEach((elem)=>{
         elem.textContent = "Easter Egg!";
     })
@@ -104,7 +104,7 @@ let ran = function colorGen(){
     return Math.floor(Math.random() * 256);
   }
 let isOn = false;
-home.addEventListener('dblclick',()=>{
+home.addEventListener('dblclick',(e)=>{
     if(isOn === false){
         event.textContent = "YOU CLICKED ME!";
         document.body.style.backgroundColor = "rgb(" + ran() + ", "+ ran() + ", " + ran() + ")";
@@ -115,5 +115,15 @@ home.addEventListener('dblclick',()=>{
         document.body.style.backgroundColor = "white";
         isOn = false;
       }
+      e.stopPropagation();
 });
 
+let dest = document.querySelector("nav");
+dest.addEventListener('dblclick',()=>{
+    dest.style.backgroundColor = "yellow";
+});
+
+let prev = document.querySelector("a:nth-of-type(2)");
+prev.addEventListener('click',(e)=>{
+    e.preventDefault();
+})
